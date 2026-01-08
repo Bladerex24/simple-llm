@@ -1,0 +1,5 @@
+gpt-oss-120b/
+.venv/
+__pycache__/
+*.pyc
+.cursor/
