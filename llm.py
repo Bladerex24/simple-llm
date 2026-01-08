@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """SimpleLLM: gpt-oss-120b inference engine with continuous batching and async request queue."""
-import os, time, threading, queue, concurrent.futures
+import os, time, threading, queue, concurrent.futures, bisect
 from dataclasses import dataclass, field
 from typing import Optional
 from collections import deque
@@ -393,7 +393,9 @@ class LLM:
             reasoning, final, raw = self.tokenizer.parse_harmony_output([tok])
             req.results[prompt_idx] = GenerationOutput(final or self.tokenizer.decode([tok]), [tok], reasoning, raw)
             self.model.clear_slot(slot)
-            free_slots.append(slot)
+            # Keep free_slots sorted so pop(0) returns lowest slot. CUDA graphs require
+            # contiguous slots [0,1,2..N-1], so reusing low slots maximizes graph hits.
+            bisect.insort(free_slots, slot)
             if pbar: pbar.update(1)
             # When all prompts in a request complete, resolve the future
             if all(r is not None for r in req.results):
@@ -435,7 +437,9 @@ class LLM:
         req.results[prompt_idx] = GenerationOutput(final or self.tokenizer.decode(tokens), tokens, reasoning, raw)
         del active_generations[slot]
         self.model.clear_slot(slot)
-        free_slots.append(slot)
+        # Keep free_slots sorted so pop(0) returns lowest slot. CUDA graphs require
+        # contiguous slots [0,1,2..N-1], so reusing low slots maximizes graph hits.
+        bisect.insort(free_slots, slot)
         if pbar: pbar.update(1)
 
         # When all prompts in a request complete, resolve the future

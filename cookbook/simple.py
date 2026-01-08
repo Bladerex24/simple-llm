@@ -1,5 +1,5 @@
-# Import the LLM class from the llm module
 from llm import LLM
+import json
 
 # Initialize the model with specified parameters
 model = LLM("./gpt-oss-120b", max_num_seqs=10, max_seq_len=1024)
@@ -24,12 +24,15 @@ request = model.generate(prompts, max_tokens=1000, ignore_eos=False)
 
 # Wait for the results
 results = request.result()
+output_list = []
 for result in results:
-    print("\n" + "-"*100)
+    output_list.append({
+        "reasoning": result.reasoning,
+        "answer": result.text,
+        "raw_text": result.raw_text
+    })
 
-    print("REASONING: ", result.reasoning)  # e.g., "Let me calculate 2+2..." (model's thought process)
-    print("ANSWER: ", result.text)          # e.g., "4" (final answer)
-    print("RAW TEXT: ", result.raw_text)    # Full output text including internal tags/format
+print(json.dumps(output_list, indent=2, ensure_ascii=False))
 
 # Stop/cleanup the model to free resources
 model.stop()

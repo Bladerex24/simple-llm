@@ -6,7 +6,7 @@
 
 | Component | Lines |
 |-----------|-------|
-| `llm.py` (engine) | 559 |
+| `llm.py` (engine) | 563 |
 | `model/model.py` | 324 |
 | `model/tokenizer.py` | 92 |
 
@@ -14,7 +14,7 @@ The codebase is designed to be read, extended, and modified.
 
 ## Performance
 
-The engine is async by default. Every request goes through a background inference loop that continuously batches work to keep the GPU saturated & prioritizing throughput.
+SimpleLLM's engine is async by default. Every request goes through a background inference loop that continuously batches work to keep the GPU saturated & prioritizing throughput.
 
 Single H100 80GB, max_tokens=1000:
 
@@ -30,7 +30,7 @@ Single H100 80GB, max_tokens=1000:
 
 **Students learning how inference engines work.** This is a working implementation of current state-of-the-art techniques in ~760 lines. You can trace through the entire request lifecycle, from tokenization to continuous batching to CUDA graph replay, without getting lost in abstraction layers.
 
-## Always Maximizing Throughput
+## Maximizing Throughput
 
 The engine implements several techniques to squeeze every bit of performance from the hardware:
 
