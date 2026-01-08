@@ -6,7 +6,7 @@
 
 | Component | Lines |
 |-----------|-------|
-| `llm.py` (engine) | 568 |
+| `llm.py` (engine) | 559 |
 | `model/model.py` | 324 |
 | `model/tokenizer.py` | 92 |
 

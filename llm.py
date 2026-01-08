@@ -345,10 +345,9 @@ class LLM:
         the inference loop waiting for new requests.
         """
         while True:
-            try:
-                req = self._request_queue.get_nowait()
-            except queue.Empty:
-                break
+            try: req = self._request_queue.get_nowait()
+            except queue.Empty: break
+
             pending_requests.append(req)
             total_prompts += len(req.token_ids)
             if pbar is None:
@@ -395,8 +394,7 @@ class LLM:
             req.results[prompt_idx] = GenerationOutput(final or self.tokenizer.decode([tok]), [tok], reasoning, raw)
             self.model.clear_slot(slot)
             free_slots.append(slot)
-            if pbar:
-                pbar.update(1)
+            if pbar: pbar.update(1)
             # When all prompts in a request complete, resolve the future
             if all(r is not None for r in req.results):
                 req.future.set_result(req.results)
@@ -423,8 +421,7 @@ class LLM:
         req, prompt_idx, tokens, pos, end_count = active_generations[slot]
         tokens.append(tok)
         pos += 1
-        if tok == end_token_id:
-            end_count += 1
+        if tok == end_token_id: end_count += 1
 
         # Stop conditions: max length, EOS token, two end tokens, or KV cache limit reached
         should_stop = (len(tokens) >= req.max_tokens or pos >= self.max_seq_len or
@@ -439,8 +436,8 @@ class LLM:
         del active_generations[slot]
         self.model.clear_slot(slot)
         free_slots.append(slot)
-        if pbar:
-            pbar.update(1)
+        if pbar: pbar.update(1)
+
         # When all prompts in a request complete, resolve the future
         if all(r is not None for r in req.results):
             req.future.set_result(req.results)
@@ -483,25 +480,20 @@ class LLM:
 
             # Idle state: no work to do, sleep briefly to avoid busy-waiting
             if not pending_requests and not active_generations:
-                if not self._loop_running:
-                    break
+                if not self._loop_running: break
                 time.sleep(0.001)
                 continue
 
             new_work = self._assign_slots_to_pending(pending_requests, free_slots)
 
             # Phase 3: Prefill newly assigned prompts (populates KV cache for each)
-            if new_work:
-                self._run_prefill(new_work, free_slots, active_generations, end_token_id, pbar)
-
-            if not active_generations:
-                continue
+            if new_work: self._run_prefill(new_work, free_slots, active_generations, end_token_id, pbar)
+            if not active_generations: continue
 
             # Phase 4-6: Decode step for all active sequences, check completions, release slots
             self._run_decode_step(active_generations, free_slots, decode_times, end_token_id, pbar)
 
-        if pbar:
-            pbar.close()
+        if pbar: pbar.close()
 
     def _run_prefill(self, new_work: list, free_slots: list, active_generations: dict, end_token_id: int, pbar):
         """
