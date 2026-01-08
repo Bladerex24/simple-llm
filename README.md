@@ -21,7 +21,7 @@ Single H100 80GB, max_tokens=1000:
 | Benchmark | SimpleLLM | vLLM |
 |-----------|------------|------|
 | batch_size=1 | 135 tok/s | 138 tok/s |
-| batch_size=64 | 4,041 tok/s | 3,234 tok/s |
+| batch_size=64 | 4,041 tok/s | 3,846 tok/s |
 ## Why SimpleLLM?
 
 **Researchers trying new ideas.** If you're experimenting with novel inference techniques, you want a simple but performant starting point that already runs on good hardware with a real model. This gives you continuous batching, CUDA graphs, quantized MoE, and all the modern stuff in code you can actually read and hack on.
