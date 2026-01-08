@@ -20,7 +20,7 @@ Single H100 80GB, max_tokens=1000:
 
 | Benchmark | SimpleLLM | vLLM |
 |-----------|------------|------|
-| batch_size=1 | 145 tok/s | 138 tok/s |
+| batch_size=1 | 135 tok/s | 138 tok/s |
 | batch_size=64 | 4,041 tok/s | 3,234 tok/s |
 ## Why SimpleLLM?
 
