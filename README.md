@@ -87,7 +87,7 @@ The `kernels/triton_kernels/` directory contains community-contributed Triton ke
 Some of these kernels were adapted/copied from open-source libraries like vLLM & Triton.
 
 ## What's Next
-- [ ] Paged attention (potentially slower on 1xH100, can be faster when max_tokens/user very quite a bit)
+- [ ] Paged attention (potentially slower on 1xH100, can be faster when max_tokens/user vary quite a bit)
 - [ ] `OpenAI/gpt-oss-120b` Tensor parallelism on 8x H100s
 - [ ] Support for other MoE models
 - [ ] Support for other architectures
